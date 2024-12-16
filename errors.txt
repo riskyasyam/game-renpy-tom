@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/screens.rpy", line 302: 'font' is not a keyword argument or valid child of the textbutton statement.
+    textbutton _("New Game") action Start() xalign 0.5 font "fonts/Jomolhari-Regular.ttf"
+                                                           ^
+
+Ren'Py Version: Ren'Py 8.3.4.24120703
+Sun Dec 15 21:19:08 2024
