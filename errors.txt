@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 35: 'corner_radius' is not a keyword argument or valid child of the textbutton statement.
-    corner_radius 15
-                 ^
+File "game/level_1.rpy", line 61: Line is indented, but the preceding scene statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    "Raka terlihat bingung dengan situasi yang ada disini"
+    ^
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Mon Dec 16 20:29:29 2024
+Tue Dec 17 23:36:20 2024
