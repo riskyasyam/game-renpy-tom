@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 302: 'font' is not a keyword argument or valid child of the textbutton statement.
-    textbutton _("New Game") action Start() xalign 0.5 font "fonts/Jomolhari-Regular.ttf"
-                                                           ^
+File "game/script.rpy", line 35: 'corner_radius' is not a keyword argument or valid child of the textbutton statement.
+    corner_radius 15
+                 ^
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Sun Dec 15 21:19:08 2024
+Mon Dec 16 20:29:29 2024
