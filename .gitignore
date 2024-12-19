@@ -1,0 +1,8 @@
+# Ignore cache save game on your local
+/saves/
+
+# Ignore error logs
+error.txt
+
+# Ignore log cache
+log.txt
