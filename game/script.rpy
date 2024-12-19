@@ -4,4 +4,3 @@ define pakTua = Character("Tetua Desa", color="#ffff")
 # Game dimulai disini.
 label start:
  call level_1
- call level_2
