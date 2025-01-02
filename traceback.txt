@@ -1,57 +1,19 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/screens.rpy", line 596, in execute
-    screen load():
-  File "game/screens.rpy", line 596, in execute
-    screen load():
-  File "game/screens.rpy", line 600, in execute
-    use file_slots(_("Level"))
-  File "game/screens.rpy", line 603, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 603, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 607, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 419, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 419, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 428, in execute
-    frame:
-  File "game/screens.rpy", line 431, in execute
-    hbox:
-  File "game/screens.rpy", line 437, in execute
-    frame:
-  File "game/screens.rpy", line 440, in execute
-    if scroll == "viewport":
-  File "game/screens.rpy", line 475, in execute
-    transclude
-  File "game/screens.rpy", line 607, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 609, in execute
-    fixed:
-  File "game/screens.rpy", line 616, in execute
-    button:
-  File "game/screens.rpy", line 616, in keywords
-    button:
-  File "game/screens.rpy", line 621, in <module>
-    action page_name_value.Toggle()
-NameError: name 'page_name_value' is not defined
+Exception: Style 'black_background' does not exist.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
-    python hide:
+  File "renpy/common/_layout/screen_load_save.rpym", line 35, in script
+    $ ui.interact()
   File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\ast.py", line 827, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\python.py", line 1178, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
-    python hide:
-  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
-    ui.interact()
+  File "renpy/common/_layout/screen_load_save.rpym", line 35, in <module>
+    $ ui.interact()
   File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\ui.py", line 301, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\core.py", line 2215, in interact
@@ -65,53 +27,23 @@ Full traceback:
   File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\displayable.py", line 434, in visit_all
     d.visit_all(callback, seen)
   [Previous line repeated 1 more time]
-  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\screen.py", line 480, in visit_all
-    callback(self)
-  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\core.py", line 2745, in <lambda>
-    root_widget.visit_all(lambda d : d.per_interact())
-  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\screen.py", line 491, in per_interact
-    self.update()
-  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\screen.py", line 697, in update
-    self.screen.function(**self.scope)
-  File "game/screens.rpy", line 596, in execute
-    screen load():
-  File "game/screens.rpy", line 596, in execute
-    screen load():
-  File "game/screens.rpy", line 600, in execute
-    use file_slots(_("Level"))
-  File "game/screens.rpy", line 603, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 603, in execute
-    screen file_slots(title):
-  File "game/screens.rpy", line 607, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 419, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 419, in execute
-    screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
-  File "game/screens.rpy", line 428, in execute
-    frame:
-  File "game/screens.rpy", line 431, in execute
-    hbox:
-  File "game/screens.rpy", line 437, in execute
-    frame:
-  File "game/screens.rpy", line 440, in execute
-    if scroll == "viewport":
-  File "game/screens.rpy", line 475, in execute
-    transclude
-  File "game/screens.rpy", line 607, in execute
-    use game_menu(title):
-  File "game/screens.rpy", line 609, in execute
-    fixed:
-  File "game/screens.rpy", line 616, in execute
-    button:
-  File "game/screens.rpy", line 616, in keywords
-    button:
-  File "game/screens.rpy", line 621, in <module>
-    action page_name_value.Toggle()
-NameError: name 'page_name_value' is not defined
+  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\screen.py", line 485, in visit_all
+    self.child.visit_all(callback, seen=None)
+  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\displayable.py", line 424, in visit_all
+    for d in self.visit():
+  File "D:\Tugas Kuliah Semester 5\Multimedia Permainan\renpy-8.3.4-sdk\renpy\display\layout.py", line 1376, in visit
+    self.style._visit_window(rv.append)
+  File "style.pyx", line 541, in renpy.style.StyleCore._visit_window
+  File "style.pyx", line 528, in renpy.style.StyleCore._get_unoffset
+  File "style.pyx", line 493, in renpy.style.StyleCore._get
+  File "style.pyx", line 686, in renpy.style.build_style
+  File "style.pyx", line 142, in renpy.style.get_full_style
+  File "style.pyx", line 98, in renpy.style.get_style
+Exception: Style 'black_background' does not exist.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.3.4.24120703
  
-Sun Dec 15 22:20:56 2024
+Sun Dec 29 21:57:42 2024

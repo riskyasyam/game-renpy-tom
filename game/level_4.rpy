@@ -13,7 +13,6 @@ image icon_battle = "images/icons/battle.png"
 
 # Definisi karakter
 define e = Character('Raka', color="#ffff")
-define narrator = Character("Narrator", color="#EABC67")
 
 # Variabel poin untuk interaksi lebih lanjut
 default courage_points = 0
@@ -25,7 +24,7 @@ label level_4:
     scene bg_lvl4_1 with fade
     play music "audio/music/bgm_level2.mp3" loop
     play sound "audio/music/walk_sound_effect.mp3"
-    narrator "Raka berhasil menyelamatkan sandera penting dari cengkeraman penjajah. Namun, ini baru permulaan. Dengan rencana matang dan persatuan warga, malam ini menjadi saksi sejarah perlawanan terhadap penjajahan."
+    "Raka berhasil menyelamatkan sandera penting dari cengkeraman penjajah. Namun, ini baru permulaan. Dengan rencana matang dan persatuan warga, malam ini menjadi saksi sejarah perlawanan terhadap penjajahan."
 
     # Menu awal untuk meningkatkan interaksi
     menu:
@@ -88,9 +87,9 @@ label perang_malam:
 
     # Menambahkan narasi sesuai poin keberanian
     if courage_points >= 7:
-        narrator "Raka memimpin dengan semangat luar biasa, meningkatkan moral semua pasukan."
+        "Raka memimpin dengan semangat luar biasa, meningkatkan moral semua pasukan."
     else:
-        narrator "Pasukan tetap berjuang keras meskipun situasi mulai menantang."
+        "Pasukan tetap berjuang keras meskipun situasi mulai menantang."
 
     jump perang_tengah_malam
 
@@ -125,8 +124,8 @@ label van_der_wall:
 label kemerdekaan:
     scene bg_lvl4_8 with fade
     if courage_points >= 10:
-        narrator "Akhirnya, perjuangan panjang ini berakhir dengan kemenangan besar. Keberanian luar biasa Raka dan pasukan membuat perlawanan ini menjadi sejarah."
+        "Akhirnya, perjuangan panjang ini berakhir dengan kemenangan besar. Keberanian luar biasa Raka dan pasukan membuat perlawanan ini menjadi sejarah."
     else:
-        narrator "Kemerdekaan tercapai, tetapi perjuangan ini mengingatkan bahwa persatuan dan keberanian selalu dibutuhkan."
+        "Kemerdekaan tercapai, tetapi perjuangan ini mengingatkan bahwa persatuan dan keberanian selalu dibutuhkan."
 
     return

@@ -296,40 +296,40 @@ screen navigation():
 
         spacing 55
 
-        if main_menu:
+        if not (renpy.get_screen("preferences") or renpy.get_screen("about")):
+            if main_menu:
 
-            textbutton _("New Game") action Start() xalign 0.5 style "navigation_button"
+                textbutton _("New Game") action Start() xalign 0.5 style "navigation_button"
+            else:
 
-        else:
+                textbutton _("Riwayat") action ShowMenu("history") xalign 0.5 style "navigation_button"
+    
+                textbutton _("Simpan") action ShowMenu("save") xalign 0.5 style "navigation_button"
 
-            textbutton _("Riwayat") action ShowMenu("history") xalign 0.5 style "navigation_button"
- 
-            textbutton _("Simpan") action ShowMenu("save") xalign 0.5 style "navigation_button"
+            textbutton _("Continue") action ShowMenu("select_level") xalign 0.5 style "navigation_button"
 
-        textbutton _("Continue") action ShowMenu("load") xalign 0.5 style "navigation_button"
+            textbutton _("Options") action ShowMenu("preferences") xalign 0.5 style "navigation_button"
 
-        textbutton _("Options") action ShowMenu("preferences") xalign 0.5 style "navigation_button"
+            if _in_replay:
 
-        if _in_replay:
+                textbutton _("Akhiri Replay") action EndReplay(confirm=True) xalign 0.5 style "navigation_button"
 
-            textbutton _("Akhiri Replay") action EndReplay(confirm=True) xalign 0.5 style "navigation_button"
+            elif not main_menu:
 
-        elif not main_menu:
+                textbutton _("Menu Utama") action MainMenu() xalign 0.5 style "navigation_button"
 
-            textbutton _("Menu Utama") action MainMenu() xalign 0.5 style "navigation_button"
+            textbutton _("Credit") action ShowMenu("about") xalign 0.5 style "navigation_button"
 
-        textbutton _("Credit") action ShowMenu("about") xalign 0.5 style "navigation_button"
+            # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
 
-        # if renpy.variant("pc") or (renpy.variant("web") and not renpy.variant("mobile")):
+            #     ## Bantuan tidak perlu atau relevan dengan perangkat mobile.
+            #     textbutton _("Bantuan") action ShowMenu("help")
 
-        #     ## Bantuan tidak perlu atau relevan dengan perangkat mobile.
-        #     textbutton _("Bantuan") action ShowMenu("help")
+            if renpy.variant("pc"):
 
-        if renpy.variant("pc"):
-
-            ## Tombol keluar dilarang di iOS dan tidak diperlukan di Android dan
-            ## Web.
-            textbutton _("Keluar") action Quit(confirm=not main_menu)
+                ## Tombol keluar dilarang di iOS dan tidak diperlukan di Android dan
+                ## Web.
+                textbutton _("Keluar") action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -586,132 +586,123 @@ style about_label_text:
 ## https://www.renpy.org/doc/html/screen_special.html#save https://
 ## www.renpy.org/doc/html/screen_special.html#load
 
-screen save():
+# screen save():
 
-    tag menu
+#     tag menu
 
-    use file_slots(_("Simpan"))
+#     window:
+#         style "black_background"
+        
+#     use file_slots(_("Simpan"))
 
 
 screen load():
     tag menu
 
-    add "images/bg_level.png"
+    use file_slots(_("Pilih Level Yang Sudah Disimpan"))
+    # add "images/bg_level.png"
 
-    # Menampilkan frame di tengah layar
+    # # Menampilkan frame di tengah layar
+    # frame:
+    #     xysize (600, 400)
+    #     xpos 0.5
+    #     xanchor 0.5
+    #     yalign 0.5
+    #     background None  # Menghilangkan background frame jika diinginkan
+
+    # # Menambahkan teks untuk judul "Level"
+    # text "Level" align (0.5, 0.2) font "fonts/Jomolhari-Regular.ttf" size 50 color "#FFFFFF"
+
+    # # Menampilkan level 1 hingga level 4 secara vertikal
+    # vbox:
+    #     yalign 0.5
+    #     spacing 20
+    #     text "Level 1" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
+    #     text "Level 2" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
+    #     text "Level 3" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
+    #     text "Level 4" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
+
+    # # Menambahkan tombol Back di bawah
+    # textbutton _("Back") action Return() style "navigation_button" xpos 0.05 yalign 1.0
+
+
+
+screen select_level():
+    tag menu  # Menonaktifkan navigation bar pada screen ini
+
     frame:
-        xysize (600, 400)
-        xpos 0.5
-        xanchor 0.5
+        xalign 0.5
         yalign 0.5
-        background None  # Menghilangkan background frame jika diinginkan
+        has vbox
 
-    # Menambahkan teks untuk judul "Level"
-    text "Level" align (0.5, 0.2) font "fonts/Jomolhari-Regular.ttf" size 50 color "#FFFFFF"
+        text _("Pilih Level") style "title" xalign 0.5
 
-    # Menampilkan level 1 hingga level 4 secara vertikal
-    vbox:
-        yalign 0.5
-        spacing 20
-        text "Level 1" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
-        text "Level 2" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
-        text "Level 3" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
-        text "Level 4" font "fonts/Jomolhari-Regular.ttf" size 30 color "#FFFFFF"
+        vbox:
+            spacing 20
+            xalign 0.5
 
-    # Menambahkan tombol Back di bawah
-    textbutton _("Back") action Return() style "navigation_button" xpos 0.05 yalign 1.0
+            # Tombol Level 1
+            textbutton _("Level 1") action Start("level_1") style "navigation_button"
 
+            # Tombol Level 2
+            textbutton _("Level 2") action Start("level_2") style "navigation_button"
 
+            # Tombol Level 3
+            textbutton _("Level 3") action Start("level_3") style "navigation_button"
+
+            # Tombol Level 4
+            textbutton _("Level 4") action Start("level_4") style "navigation_button"
+
+        # Tombol Kembali ke Menu Utama
+        textbutton _("Kembali") action Return() style "navigation_button"
 
 screen file_slots(title):
+    tag menu  # Menonaktifkan navigation bar pada screen ini
 
     default page_name_value = FilePageNameInputValue(pattern=_("Halaman {}"), auto=_("Otomatis save"), quick=_("Save cepat"))
 
-    use game_menu(title):
+    frame:
+        xalign 0.5
+        yalign 0.1
+        has vbox
 
-        fixed:
+        text title style "title" xalign 0.5
 
-            ## Ini memastikan input akan mendapat event masuk sebelum tombol
-            ## lainnya.
-            order_reverse True
+    grid gui.file_slot_cols gui.file_slot_rows:
+        style_prefix "slot"
 
-            ## Nama halaman, yang dapat di edit dengan mengklik tombol.
+        xalign 0.5
+        yalign 0.5
+        spacing gui.slot_spacing
+
+        for i in range(gui.file_slot_cols * gui.file_slot_rows):
+            $ slot = i + 1
+
             button:
-                style "page_label"
+                action FileAction(slot)
+                has vbox
 
-                key_events True
-                xalign 0.5
-                action page_name_value.Toggle()
+                add FileScreenshot(slot) xalign 0.5
 
-                input:
-                    style "page_label_text"
-                    value page_name_value
+                text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("Slot Kosong")):
+                    style "slot_time_text"
 
-            ## Kolom slot file.
-            grid gui.file_slot_cols gui.file_slot_rows:
-                style_prefix "slot"
+                text FileSaveName(slot):
+                    style "slot_name_text"
 
-                xalign 0.5
-                yalign 0.5
+                key "save_delete" action FileDelete(slot)
 
-                spacing gui.slot_spacing
+    # Bagian tombol navigasi di bawah layar
+    hbox:
+        xalign 0.5
+        yalign 1.0
+        spacing 100  # Jarak horizontal antara tombol
 
-                for i in range(gui.file_slot_cols * gui.file_slot_rows):
+        # Tombol Kembali
+        textbutton _("Kembali") action Return() style "navigation_button"
 
-                    $ slot = i + 1
-
-                    button:
-                        action FileAction(slot)
-
-                        has vbox
-
-                        add FileScreenshot(slot) xalign 0.5
-
-                        text FileTime(slot, format=_("{#file_time}%A, %B %d %Y, %H:%M"), empty=_("Slot Kosong")):
-                            style "slot_time_text"
-
-                        text FileSaveName(slot):
-                            style "slot_name_text"
-
-                        key "save_delete" action FileDelete(slot)
-
-            # ## Tombol untuk mengakses halaman lain.
-            # vbox:
-            #     style_prefix "page"
-
-            #     xalign 0.5
-            #     yalign 1.0
-
-            #     hbox:
-            #         xalign 0.5
-
-            #         spacing gui.page_spacing
-
-            #         textbutton _("<") action FilePagePrevious()
-            #         key "save_page_prev" action FilePagePrevious()
-
-            #         if config.has_autosave:
-            #             textbutton _("{#auto_page}O") action FilePage("auto")
-
-            #         if config.has_quicksave:
-            #             textbutton _("{#quick_page}C") action FilePage("quick")
-
-            #         ## antara(1,10) beri nomor antara 1 sampai 9.
-            #         for page in range(1, 10):
-            #             textbutton "[page]" action FilePage(page)
-
-            #         textbutton _(">") action FilePageNext()
-            #         key "save_page_next" action FilePageNext()
-
-                # if config.has_sync:
-                #     if CurrentScreenName() == "save":
-                #         textbutton _("Sinkronisasi Unggah"):
-                #             action UploadSync()
-                #             xalign 0.5
-                #     else:
-                #         textbutton _("Unduh Sinkronisasi"):
-                #             action DownloadSync()
-                #             xalign 0.5
+        # Tombol Keluar dari Game
+        textbutton _("Keluar") action Quit(confirm=True) style "navigation_button"
 
 
 style page_label is gui_label

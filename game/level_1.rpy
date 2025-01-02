@@ -38,7 +38,7 @@ label level_1:
     # Memulai musik latar
     
     scene bg_lvl1_1 with dissolve
-    play music "audio/music/bg_sound.mp3"
+    play music "audio/music/bgm_level2.mp3" loop
     play sound "audio/bird_song.mp3"
     "*Suara burung"
     "Pagi yang indah untuk memulai hari di jalan Mastrip."

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/level_1.rpy", line 61: Line is indented, but the preceding scene statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    "Raka terlihat bingung dengan situasi yang ada disini"
-    ^
+File "game/screens.rpy", line 101: 'style' is not a keyword argument or valid child of the screen statement.
+    style "black_background"
+         ^
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Tue Dec 17 23:36:20 2024
+Sun Dec 29 21:28:00 2024
